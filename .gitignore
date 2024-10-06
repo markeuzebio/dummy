@@ -1,6 +1,10 @@
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
+# User added restrictions
+build/
+*.user
+#########################
 *~
 *.autosave
 *.a
