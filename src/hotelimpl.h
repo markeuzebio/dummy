@@ -6,7 +6,7 @@
 #include <string>
 class HotelImpl: public Hotel{
 private:
-    HotelImpl();
+    HotelImpl() {};
     static HotelImpl *_instance;
 public:
     virtual ~HotelImpl(){};
