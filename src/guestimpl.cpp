@@ -3,18 +3,18 @@ GuestImpl::GuestImpl()
 {
 
 }
-GuestImpl::GuestImpl(std::string name, std::string cpf, std::string email, std::string phone){
+GuestImpl::GuestImpl(std::string name, unsigned long int cpf, std::string email, unsigned long int phone){
     this->name = name;
     this->cpf = cpf;
     this->email = email;
     this->phone = phone;
 }
-std::string GuestImpl::getCpf()  {return cpf;}
+unsigned long int GuestImpl::getCpf()  {return cpf;}
 std::string GuestImpl::getEmail()  {return email;}
 std::string GuestImpl::getName()  {return name;}
-std::string GuestImpl::getPhone() {return phone;}
+unsigned long int GuestImpl::getPhone() {return phone;}
 
-void GuestImpl::setCpf(std::string cpf){
+void GuestImpl::setCpf(unsigned long int cpf){
     this->cpf = cpf;
 }
 
@@ -26,7 +26,7 @@ void GuestImpl::setName(std::string name){
     this->name=name;
 }
 
-void GuestImpl::setPhone(std::string phone){
+void GuestImpl::setPhone(unsigned long int phone){
     this->phone=phone;
 }
 GuestImpl& GuestImpl::operator =(const GuestImpl &guest){

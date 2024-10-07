@@ -7,7 +7,7 @@
 class Hotel{
 public:
     static Hotel* createHotel();
-    virtual Guest* createGuest(std::string name, std::string cpf, std::string email, std::string phone)=0;
+    virtual Guest* createGuest(std::string name, unsigned long int cpf, std::string email, unsigned long int phone)=0;
     virtual ~Hotel(){};
 };
 

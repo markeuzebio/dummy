@@ -7,7 +7,7 @@ Hotel* HotelImpl::instance(){
     return _instance;
 }
 
-Guest* HotelImpl::createGuest(std::string name, std::string cpf, std::string email, std::string phone){
+Guest* HotelImpl::createGuest(std::string name, unsigned long cpf, std::string email, unsigned long phone){
     Guest *g = new GuestImpl(name,cpf,email,phone);
     return g;
 }

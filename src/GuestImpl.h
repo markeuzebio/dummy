@@ -12,7 +12,7 @@ private:
     /**
      * @brief guest's cpf
      */
-    std::string cpf;
+    unsigned long int cpf;
     /**
      * @brief guest's email
      */
@@ -20,7 +20,7 @@ private:
     /**
      * @brief guest's phone
      */
-    std::string phone;
+    unsigned long int phone;
 
 public:
     /**
@@ -36,7 +36,7 @@ public:
      * @param email
      * @param phone
      */
-    GuestImpl(std::string name,std::string cpf,std::string email,std::string phone);
+    GuestImpl(std::string name,unsigned long int cpf,std::string email,unsigned long int phone);
 
     /**
      * @brief set a Name for the guest
@@ -48,13 +48,13 @@ public:
      * @brief set a Cpf for the guest
      * @param cpf
      */
-    void setCpf(std::string cpf);
+    void setCpf(unsigned long int cpf);
 
     /**
      * @brief set a Phone for the guest
      * @param phone
      */
-    void setPhone(std::string phone);
+    void setPhone(unsigned long int phone);
 
     /**
      * @brief set a Email for the guest
@@ -77,13 +77,13 @@ public:
      * @brief get the guest Cpf
      * @return
      */
-    std::string getCpf() ;
+    unsigned long int getCpf() ;
 
     /**
      * @brief get the guest Phone
      * @return
      */
-    std::string getPhone();
+    unsigned long getPhone();
 
     /**
      * @brief GuestImpl constructor by copy
