@@ -1,4 +1,4 @@
-#include "hotelImpl.h"
+#include "hotelimpl.h"
 
 Hotel* HotelImpl::instance(){
     if(_instance == 0){
