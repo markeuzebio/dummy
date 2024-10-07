@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/connmodule.cpp \
     src/guestimpl.cpp \
     src/hotel.cpp \
     src/hotelimpl.cpp \
@@ -16,12 +17,17 @@ SOURCES += \
     src/mainwindow.cpp
 
 HEADERS += \
+    src/connmodule.h \
     src/guestimpl.h \
     src/guest.h \
     src/guestimpl.h \
     src/hotel.h \
     src/hotelimpl.h \
     src/mainwindow.h
+
+unix {
+    INCLUDE_PATH += /usr/include/mariadb
+}
 
 FORMS += \
     src/mainwindow.ui
