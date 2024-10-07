@@ -2,7 +2,7 @@
 #define HOTELIMPL_H
 
 #include "hotel.h"
-#include "src/guestimpl.h"
+#include "guestimpl.h"
 #include <string>
 class HotelImpl: public Hotel{
 private:

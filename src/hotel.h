@@ -2,7 +2,7 @@
 #define HOTEL_H
 
 
-#include "src/guest.h"
+#include "guest.h"
 
 class Hotel{
 public:
