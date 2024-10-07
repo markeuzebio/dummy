@@ -9,10 +9,18 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    hotel.cpp \
+    hotelImpl.cpp \
+    src/guestimpl.cpp \
     src/main.cpp \
     src/mainwindow.cpp
 
 HEADERS += \
+    hotel.h \
+    hotelImpl.h \
+    src/GuestImpl.h \
+    src/guest.h \
+    src/guestimpl.h \
     src/mainwindow.h
 
 FORMS += \
