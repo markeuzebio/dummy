@@ -11,16 +11,16 @@ CONFIG += c++17
 SOURCES += \
     src/guestimpl.cpp \
     src/hotel.cpp \
-    src/hotelImpl.cpp \
+    src/hotelimpl.cpp \
     src/main.cpp \
     src/mainwindow.cpp
 
 HEADERS += \
-    src/GuestImpl.h \
+    src/guestimpl.h \
     src/guest.h \
     src/guestimpl.h \
     src/hotel.h \
-    src/hotelImpl.h \
+    src/hotelimpl.h \
     src/mainwindow.h
 
 FORMS += \

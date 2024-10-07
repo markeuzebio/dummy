@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 #include <QApplication>
-#include "hotelImpl.h"
+#include "hotelimpl.h"
 #include "guest.h"
 #include <iostream>
 using namespace std;
