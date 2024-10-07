@@ -1,5 +1,5 @@
 #include "hotel.h"
-#include "hotelImpl.h"
+#include "hotelimpl.h"
 HotelImpl* HotelImpl::_instance = nullptr;
 Hotel* Hotel::createHotel(){
     return HotelImpl::instance();
