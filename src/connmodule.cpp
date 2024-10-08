@@ -48,8 +48,6 @@ int ConnModule::createGuest(Guest *guest) {
         // Close the connection
         conn->close();
     } catch(sql::SQLException &e) {
-        std::cerr << "Error creating guest: " << e.what() << "\n";
-        std::cerr << e.getErrorCode() << "\n";
         throw;
         return 0;
     }
