@@ -1,6 +1,11 @@
 #include <iostream>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "hotel.h"
+#include "connmodule.h"
+
+#define PK_ERROR_CODE   1062
+#define CONN_ERROR_CODE 1045
 
 using namespace std;
 
@@ -18,19 +23,26 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btn_cadastrar_clicked()
 {
-    string nome;
-    string cpf;
-    string email;
-    string telefone;
+    Hotel *hotel = Hotel::createHotel();
+    Guest *guest;
 
-    nome = ui->txt_nome->text().toStdString();
-    cpf = ui->txt_cpf->text().toStdString();
-    email = ui->txt_email->text().toStdString();
-    telefone = ui->txt_telefone->text().toStdString();
+    // UI fields values
+    string guest_name;
+    unsigned long int guest_cpf;
+    string guest_email;
+    unsigned long int guest_phone;
 
-    cout << nome << "\n";
-    cout << cpf << "\n";
-    cout << email << "\n";
-    cout << telefone << "\n";
+    guest_name = ui->txt_nome->text().toStdString();
+    guest_cpf = ui->txt_cpf->text().toULong();
+    guest_email = ui->txt_email->text().toStdString();
+    guest_phone = ui->txt_telefone->text().toULong();
+
+    guest = hotel->createGuest(guest_name, guest_cpf, guest_email, guest_phone);
+
+    try {
+        ConnModule::createGuest(guest);
+    } catch(sql::SQLException &e) {
+        std::cerr << "Error creating guest: " << e.what() << "\n";
+    }
 }
 

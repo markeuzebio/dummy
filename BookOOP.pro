@@ -27,6 +27,7 @@ HEADERS += \
 
 unix {
     INCLUDE_PATH += /usr/include/mariadb
+    LIBS += -L/usr/lib/x86_64-linux-gnu -lmariadbcpp
 }
 
 FORMS += \

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <mariadb/conncpp.hpp>
+#include "guest.h"
 
 class ConnModule {
 private:
@@ -13,7 +14,7 @@ private:
 public:
     static std::unique_ptr<sql::Connection> createConnection(std::string username, std::string password, std::string url);
 
-    static int createGuest(std::unique_ptr<sql::Connection> &conn, std::string guest_name, unsigned long int guest_cpf, unsigned long int guest_telephone, std::string guest_email);
+    static int createGuest(Guest *guest);
 };
 
 #endif

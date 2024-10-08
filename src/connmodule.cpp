@@ -1,35 +1,57 @@
 #include <iostream>
 #include "connmodule.h"
 
-std::unique_ptr<sql::Connection> ConnModule::createConnection(std::string username_param, std::string password_param, std::string url_param) {
-    // Instantiate the driver
-    sql::Driver *driver = sql::mariadb::get_driver_instance();
+#define DB_USERNAME   "admin"
+#define DB_PASSWORD   "teste"
+#define DB_URL        "jdbc:mariadb://localhost:3306/teste"
 
-    // Configure Connection
-    sql::SQLString url(url_param);
-    sql::Properties properties({{"user", username_param}, {"password", password_param}});
+typedef std::unique_ptr<sql::Connection> Connection;
+typedef std::unique_ptr<sql::Statement> Statement;
+typedef std::unique_ptr<sql::PreparedStatement> PreparedStatement;
 
-    // Establish connection
-    std::unique_ptr<sql::Connection> conn(driver->connect(url, properties));
+Connection ConnModule::createConnection(std::string username_param, std::string password_param, std::string url_param) {
+    try {
+        // Instantiate the driver
+        sql::Driver *driver = sql::mariadb::get_driver_instance();
 
-    return conn;
+        // Configure Connection
+        sql::SQLString url(url_param);
+        sql::Properties properties({{"user", username_param}, {"password", password_param}});
+
+        // Establish connection
+        Connection conn(driver->connect(url, properties));
+
+        return conn;
+    } catch(sql::SQLException &e) {
+        throw;
+    }
+
+    return nullptr;
 }
 
-int ConnModule::createGuest(std::unique_ptr<sql::Connection> &conn, std::string guest_name, unsigned long int guest_cpf, unsigned long int guest_telephone, std::string guest_email) {
+int ConnModule::createGuest(Guest *guest) {
     try {
+        Connection conn = createConnection(DB_USERNAME, DB_PASSWORD, DB_URL);
+
         // Create "INSERT INTO" statement
-        std::unique_ptr<sql::PreparedStatement> insert_statement(conn->prepareStatement("INSERT INTO hospedes (nome, cpf, telefone, email) VALUES (?, ?, ?, ?)"));
+        PreparedStatement insert_statement(conn->prepareStatement("INSERT INTO hospedes (nome, cpf, telefone, email) VALUES (?, ?, ?, ?)"));
 
         // Binding C++ varibles into INSERT statement
-        insert_statement->setBigInt(1, guest_name);
-        insert_statement->setBigInt(2, std::to_string(guest_cpf));
-        insert_statement->setBigInt(3, std::to_string(guest_telephone));
-        insert_statement->setString(4, guest_email);
+        insert_statement->setBigInt(1, guest->getName());
+        insert_statement->setBigInt(2, std::to_string(guest->getCpf()));
+        insert_statement->setBigInt(3, std::to_string(guest->getPhone()));
+        insert_statement->setString(4, guest->getEmail());
 
         // Execute query
-        return insert_statement->execute();
+        insert_statement->execute();
+
+        // Close the connection
+        conn->close();
     } catch(sql::SQLException &e) {
         std::cerr << "Error creating guest: " << e.what() << "\n";
+        std::cerr << e.getErrorCode() << "\n";
+        throw;
+        return 0;
     }
 
     return 1;
