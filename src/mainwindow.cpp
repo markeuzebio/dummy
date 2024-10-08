@@ -45,4 +45,3 @@ void MainWindow::on_btn_cadastrar_clicked()
         std::cerr << "Error creating guest: " << e.what() << "\n";
     }
 }
-
