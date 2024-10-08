@@ -1,7 +1,6 @@
 #ifndef HOTEL_H
 #define HOTEL_H
 
-
 #include "guest.h"
 
 class Hotel{
